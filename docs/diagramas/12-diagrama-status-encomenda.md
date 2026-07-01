@@ -1,0 +1,18 @@
+# 12. Diagrama de Status da Encomenda
+
+```mermaid
+stateDiagram-v2
+    [*] --> SOLICITADA
+    SOLICITADA --> EM_ANALISE
+    EM_ANALISE --> ORCAMENTO_ENVIADO
+    ORCAMENTO_ENVIADO --> CONFIRMADA
+    CONFIRMADA --> EM_PRODUCAO
+    EM_PRODUCAO --> PRONTA
+    PRONTA --> ENTREGUE
+    SOLICITADA --> CANCELADA
+    EM_ANALISE --> CANCELADA
+    ORCAMENTO_ENVIADO --> CANCELADA
+    CONFIRMADA --> CANCELADA
+    CANCELADA --> [*]
+    ENTREGUE --> [*]
+```
