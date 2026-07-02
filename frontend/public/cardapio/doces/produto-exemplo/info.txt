@@ -1,0 +1,7 @@
+nome: Doce caseiro
+preco: 6,00
+descricao: Doce caseiro vendido conforme disponibilidade do dia.
+disponivel: sim
+tipo: pedido_rapido
+selo: Caseiro
+destaque: nao

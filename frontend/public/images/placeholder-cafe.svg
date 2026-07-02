@@ -1,0 +1,10 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="520" rx="28" fill="#fff0ca"/>
+  <circle cx="130" cy="112" r="74" fill="#f4b000"/>
+  <path d="M260 210H472V303C472 365 425 410 365 410H344C296 410 260 372 260 324V210Z" fill="#e3272e"/>
+  <path d="M472 246H523C558 246 558 324 504 324H472" stroke="#3b170b" stroke-width="19"/>
+  <path d="M300 164C286 141 291 120 314 98" stroke="#7b3514" stroke-width="14" stroke-linecap="round"/>
+  <path d="M358 164C344 141 349 120 372 98" stroke="#7b3514" stroke-width="14" stroke-linecap="round"/>
+  <path d="M418 164C404 141 409 120 432 98" stroke="#7b3514" stroke-width="14" stroke-linecap="round"/>
+  <text x="64" y="464" fill="#3b170b" font-family="Arial, sans-serif" font-size="40" font-weight="800">Café do Ciclista</text>
+</svg>

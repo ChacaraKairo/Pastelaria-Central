@@ -1,0 +1,9 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="520" rx="28" fill="#fff1c9"/>
+  <circle cx="578" cy="107" r="74" fill="#e3272e"/>
+  <path d="M282 130H468L441 432H310L282 130Z" fill="#fb4b32"/>
+  <path d="M303 173H447L428 390H323L303 173Z" fill="#ffce52"/>
+  <path d="M330 82H454" stroke="#3b170b" stroke-width="18" stroke-linecap="round"/>
+  <path d="M366 78L348 132" stroke="#3b170b" stroke-width="14" stroke-linecap="round"/>
+  <text x="72" y="466" fill="#3b170b" font-family="Arial, sans-serif" font-size="42" font-weight="800">Bebida gelada</text>
+</svg>

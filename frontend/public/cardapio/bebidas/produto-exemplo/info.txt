@@ -1,0 +1,7 @@
+nome: Mate Cola
+preco: 5,00
+descricao: Bebida gelada. Sabores a confirmar pelo WhatsApp.
+disponivel: sim
+tipo: pedido_rapido
+selo: Gelado
+destaque: nao

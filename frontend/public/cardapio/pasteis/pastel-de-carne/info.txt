@@ -1,0 +1,7 @@
+nome: Pastel de carne
+preco: 8,00
+descricao: Pastel frito na hora com recheio de carne temperada.
+disponivel: sim
+tipo: pedido_rapido
+selo: Mais vendido
+destaque: sim

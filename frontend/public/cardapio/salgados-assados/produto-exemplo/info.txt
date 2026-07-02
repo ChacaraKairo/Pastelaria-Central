@@ -1,0 +1,7 @@
+nome: Enroladinho assado
+preco: 6,00
+descricao: Salgado assado com massa macia e recheio saboroso.
+disponivel: sim
+tipo: pedido_rapido
+selo: Assado
+destaque: nao

@@ -1,0 +1,7 @@
+nome: Coxinha de frango
+preco: 6,00
+descricao: Coxinha cremosa com casquinha sequinha.
+disponivel: sim
+tipo: pedido_rapido
+selo: Quentinha
+destaque: sim

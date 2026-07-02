@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Cardápio</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <span>Pastelaria Central</span>
+        <h1>Gestão do Cardápio</h1>
+      </div>
+      <div class="header-actions">
+        <button id="saveButton" class="btn btn-light" type="button">Salvar</button>
+        <button id="exportButton" class="btn btn-primary" type="button">Exportar cardápio</button>
+      </div>
+    </header>
+
+    <main class="admin-shell">
+      <aside class="admin-sidebar">
+        <div class="sidebar-brand">
+          <strong>PC</strong>
+          <span>Formulário</span>
+        </div>
+        <nav class="sidebar-nav" aria-label="Navegação do formulário">
+          <button class="nav-item active" type="button" data-view-target="home">Início</button>
+          <button class="nav-item" type="button" data-view-target="categories">Categorias</button>
+          <button class="nav-item" type="button" data-view-target="products">Produtos</button>
+          <button class="nav-item" type="button" data-view-target="storage">Banco e exportação</button>
+        </nav>
+      </aside>
+
+      <section class="admin-content">
+        <section class="view is-active" data-view="home">
+          <div class="page-heading">
+            <span>Painel inicial</span>
+            <h2>Pastelaria Central</h2>
+            <p>Sistema local para organizar categorias, produtos, imagens e exportar a pasta do cardápio.</p>
+          </div>
+
+          <div class="summary-grid">
+            <article class="summary-card">
+              <span>Categorias</span>
+              <strong id="summaryCategories">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Produtos</span>
+              <strong id="summaryProducts">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Disponíveis</span>
+              <strong id="summaryAvailable">0</strong>
+            </article>
+            <article class="summary-card">
+              <span>Destaques</span>
+              <strong id="summaryFeatured">0</strong>
+            </article>
+          </div>
+
+          <div class="home-actions-grid">
+            <button class="home-action" type="button" data-view-target="categories">
+              <strong>Gerenciar Categorias</strong>
+              <span>Criar tópicos do cardápio e ver quantos produtos existem em cada um.</span>
+            </button>
+            <button class="home-action" type="button" data-view-target="products">
+              <strong>Gerenciar Produtos</strong>
+              <span>Cadastrar produtos, preços, descrições, tipos, selos e imagens.</span>
+            </button>
+            <button class="home-action" type="button" data-view-target="storage">
+              <strong>Exportar Cardápio</strong>
+              <span>Gerar a pasta final para substituir no site da Pastelaria Central.</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="view" data-view="categories">
+          <div class="page-heading">
+            <span>Organização</span>
+            <h2>Categorias</h2>
+            <p>Crie e mantenha os tópicos que aparecem no cardápio do site.</p>
+          </div>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span>Nova categoria</span>
+                <h3>Cadastrar tópico</h3>
+              </div>
+            </div>
+            <form id="categoryForm" class="inline-form">
+              <input id="categoryName" placeholder="Ex.: Produtos de NC" />
+              <button class="btn btn-primary" type="submit">Adicionar</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span>Lista</span>
+                <h3>Categorias cadastradas</h3>
+              </div>
+            </div>
+            <div id="categoryList" class="category-list"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="products">
+          <div class="page-heading">
+            <span>Cadastro</span>
+            <h2>Produtos</h2>
+            <p>Use esta página para cadastrar produtos, editar informações e organizar imagens.</p>
+          </div>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span>Produto</span>
+                <h3 id="formTitle">Novo produto</h3>
+              </div>
+              <button id="newProductButton" class="btn btn-light" type="button">Limpar formulário</button>
+            </div>
+
+            <form id="productForm" class="product-form">
+              <input id="productId" type="hidden" />
+
+              <div class="form-row">
+                <label>
+                  Categoria
+                  <select id="productCategory" required></select>
+                </label>
+                <label>
+                  Nome
+                  <input id="productName" required placeholder="Ex.: Pastel de carne" />
+                </label>
+                <label>
+                  Preço
+                  <input id="productPrice" required placeholder="Ex.: 8,00" />
+                </label>
+              </div>
+
+              <label>
+                Descrição
+                <textarea id="productDescription" required placeholder="Descrição curta do produto"></textarea>
+              </label>
+
+              <div class="form-row">
+                <label>
+                  Tipo
+                  <select id="productType">
+                    <option value="pedido_rapido">Pedido rápido</option>
+                    <option value="encomenda">Encomenda</option>
+                    <option value="ambos">Ambos</option>
+                  </select>
+                </label>
+
+                <label>
+                  Selo
+                  <input id="productBadge" placeholder="Ex.: Mais vendido" />
+                </label>
+              </div>
+
+              <div class="checks">
+                <label><input id="productAvailable" type="checkbox" checked /> Disponível</label>
+                <label><input id="productFeatured" type="checkbox" /> Destaque na home</label>
+              </div>
+
+              <div class="image-picker">
+                <button id="pickImagesButton" class="btn btn-light" type="button">Selecionar imagens</button>
+                <span id="imageCount">Nenhuma imagem selecionada</span>
+              </div>
+
+              <div id="imagePreview" class="image-preview"></div>
+
+              <button class="btn btn-primary form-submit" type="submit">Salvar produto</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <span>Produtos</span>
+                <h3>Lista cadastrada</h3>
+              </div>
+              <div class="table-tools">
+                <select id="productCategoryFilter"></select>
+                <input id="searchInput" class="search" placeholder="Buscar produto..." />
+              </div>
+            </div>
+            <div id="productList" class="product-list"></div>
+          </section>
+        </section>
+
+        <section class="view" data-view="storage">
+          <div class="page-heading">
+            <span>Arquivos</span>
+            <h2>Banco e exportação</h2>
+            <p>O formulário usa SQLite local e uma pasta interna para armazenar as imagens dos produtos.</p>
+          </div>
+
+          <section class="panel help-panel">
+            <h3>Exportação</h3>
+            <p>Ao exportar, será criada uma pasta chamada <strong>cardapio</strong> com categorias, produtos, imagens e <strong>info.txt</strong>.</p>
+            <p>Depois copie essa pasta para <strong>frontend/public/cardapio</strong>.</p>
+            <button id="exportButtonSecondary" class="btn btn-primary" type="button">Exportar cardápio</button>
+          </section>
+
+          <section class="panel help-panel">
+            <h3>Banco local</h3>
+            <p>O cadastro roda com SQLite junto com o Electron.</p>
+            <dl class="storage-list">
+              <dt>Banco SQLite</dt>
+              <dd id="databasePath">Carregando...</dd>
+              <dt>Imagens internas</dt>
+              <dd id="imagesPath">Carregando...</dd>
+            </dl>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

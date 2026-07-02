@@ -24,6 +24,12 @@ Esta pasta contém a documentação funcional, técnica, visual e estratégica d
 18. [SEO local](./18-seo-local.md)
 19. [Roadmap de desenvolvimento](./19-roadmap-desenvolvimento.md)
 20. [Critérios de aceite e testes](./20-criterios-aceite-testes.md)
+21. [Checklist de testes manuais](./21-checklist-testes-manuais.md)
+22. [Estratégia mobile](./22-estrategia-mobile.md)
+23. [Layout mobile-first](./23-layout-mobile-first.md)
+24. [Componentes mobile](./24-componentes-mobile.md)
+25. [Fluxo mobile de pedido](./25-fluxo-mobile-pedido.md)
+26. [PWA futuro](./26-pwa-futuro.md)
 
 ## Diagramas
 

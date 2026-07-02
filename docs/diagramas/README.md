@@ -24,3 +24,6 @@ Diagramas em Mermaid para orientar análise, arquitetura e desenvolvimento.
 18. [Reaproveitamento do projeto antigo](./18-diagrama-reaproveitamento-projeto-antigo.md)
 19. [Roadmap](./19-diagrama-roadmap.md)
 20. [Deploy](./20-diagrama-deploy.md)
+21. [Navegação mobile](./21-diagrama-navegacao-mobile.md)
+22. [Fluxo mobile de pedido](./22-diagrama-fluxo-mobile-pedido.md)
+23. [Componentes mobile](./23-diagrama-componentes-mobile.md)

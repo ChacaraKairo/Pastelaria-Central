@@ -1,0 +1,9 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="520" rx="28" fill="#ffe9b3"/>
+  <circle cx="126" cy="104" r="68" fill="#e3272e"/>
+  <circle cx="610" cy="435" r="92" fill="#f4b000"/>
+  <path d="M143 326C211 184 367 117 533 206C478 333 328 415 143 326Z" fill="#d88721"/>
+  <path d="M184 311C244 221 356 176 489 224C435 315 315 361 184 311Z" fill="#f6c35c"/>
+  <path d="M218 286C267 252 348 221 445 239" stroke="#7b3514" stroke-width="16" stroke-linecap="round" opacity=".45"/>
+  <text x="62" y="468" fill="#3b170b" font-family="Arial, sans-serif" font-size="42" font-weight="800">Pastelaria Central</text>
+</svg>

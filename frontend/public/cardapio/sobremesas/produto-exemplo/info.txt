@@ -1,0 +1,7 @@
+nome: Sobremesa do dia
+preco: 7,00
+descricao: Opção doce para finalizar o pedido. Confirmar disponibilidade.
+disponivel: sim
+tipo: pedido_rapido
+selo: Doce
+destaque: nao

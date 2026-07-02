@@ -1,0 +1,11 @@
+<svg width="900" height="760" viewBox="0 0 900 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="760" rx="42" fill="#fff1c9"/>
+  <circle cx="728" cy="154" r="98" fill="#e3272e"/>
+  <circle cx="156" cy="604" r="118" fill="#f4b000"/>
+  <path d="M150 462C256 238 503 132 765 273C678 473 441 602 150 462Z" fill="#c46b18"/>
+  <path d="M220 432C314 291 492 219 703 296C617 441 429 516 220 432Z" fill="#f7bd45"/>
+  <path d="M268 393C359 335 475 296 626 318" stroke="#7b3514" stroke-width="24" stroke-linecap="round" opacity=".45"/>
+  <path d="M311 439C414 394 509 372 599 383" stroke="#7b3514" stroke-width="18" stroke-linecap="round" opacity=".35"/>
+  <text x="72" y="108" fill="#3b170b" font-family="Arial, sans-serif" font-size="58" font-weight="900">Peça agora</text>
+  <text x="76" y="164" fill="#7b3514" font-family="Arial, sans-serif" font-size="30" font-weight="700">Pastéis fritos na hora</text>
+</svg>

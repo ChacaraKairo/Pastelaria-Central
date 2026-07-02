@@ -1,0 +1,8 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="720" height="520" rx="28" fill="#ffe1ac"/>
+  <circle cx="596" cy="110" r="78" fill="#f4b000"/>
+  <path d="M104 322C161 202 287 147 425 219C379 328 250 389 104 322Z" fill="#d88721"/>
+  <path d="M380 129H522L501 380H402L380 129Z" fill="#e3272e"/>
+  <path d="M402 170H505L490 340H417L402 170Z" fill="#ffce52"/>
+  <text x="64" y="462" fill="#3b170b" font-family="Arial, sans-serif" font-size="42" font-weight="800">Combo da Central</text>
+</svg>
