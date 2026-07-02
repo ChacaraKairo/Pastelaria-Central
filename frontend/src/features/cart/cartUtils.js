@@ -47,3 +47,41 @@ export function getCartTotal(cartItems) {
 export function getCartCount(cartItems) {
   return cartItems.reduce((total, item) => total + item.quantity, 0);
 }
+
+export function hasCategoryInCart(cartItems, categories) {
+  const categoryList = Array.isArray(categories) ? categories : [categories];
+  return cartItems.some((item) => categoryList.includes(item.category));
+}
+
+export function hasRoleInCart(cartItems, roles) {
+  const roleList = Array.isArray(roles) ? roles : [roles];
+  return cartItems.some((item) => roleList.includes(item.role));
+}
+
+export function getCartUpsellSuggestions(cartItems, products, limit = 3) {
+  if (!cartItems.length) return [];
+
+  const hasPrincipal = hasRoleInCart(cartItems, "principal");
+  const hasDrink = hasCategoryInCart(cartItems, "Bebidas");
+  const hasCombo = hasRoleInCart(cartItems, "combo");
+
+  let targetCategories = [];
+
+  if (hasPrincipal && !hasDrink) {
+    targetCategories = ["Bebidas"];
+  } else if (hasDrink && !hasPrincipal) {
+    targetCategories = ["Salgados", "Pastéis"];
+  } else if (!hasCombo) {
+    targetCategories = ["Combos"];
+  }
+
+  if (!targetCategories.length) return [];
+
+  const cartProductIds = new Set(cartItems.map((item) => item.id));
+
+  return products
+    .filter((product) => product.available && product.price > 0)
+    .filter((product) => !cartProductIds.has(product.id))
+    .filter((product) => targetCategories.includes(product.category))
+    .slice(0, limit);
+}
