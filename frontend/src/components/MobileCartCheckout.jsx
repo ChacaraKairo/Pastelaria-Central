@@ -1,5 +1,5 @@
-import CartDrawer from "./CartDrawer";
+import FastFoodCartDrawer from "./FastFoodCartDrawer.jsx";
 
 export default function MobileCartCheckout(props) {
-  return <CartDrawer {...props} />;
+  return <FastFoodCartDrawer {...props} />;
 }
