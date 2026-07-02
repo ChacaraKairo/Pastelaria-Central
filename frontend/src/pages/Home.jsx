@@ -6,10 +6,10 @@ import { siteConfig } from "../data/siteConfig";
 import { Bike, MapPin, PackageCheck, PartyPopper } from "lucide-react";
 
 export default function Home({ onNavigate, onAddProduct }) {
-  const featured = products.filter((product) => product.featured).slice(0, 4);
-  const specialProducts = products
-    .filter((product) => ["Especial", "Salgados Fritos", "Salgados Assados"].includes(product.category))
-    .slice(0, 3);
+  const featured = products.filter((product) => product.featured || product.badge === "Mais vendido").slice(0, 4);
+  const salgados = products.filter((product) => product.category === "Salgados").slice(0, 4);
+  const bebidas = products.filter((product) => product.category === "Bebidas").slice(0, 4);
+  const combos = products.filter((product) => product.category === "Combos").slice(0, 4);
 
   return (
     <>
@@ -26,13 +26,30 @@ export default function Home({ onNavigate, onAddProduct }) {
       </section>
 
       <section className="section band">
-        <SectionTitle eyebrow="Cardápio" title="Pedido rápido para matar a fome" text="Opções vindas das pastas do cardápio, prontas para pedir pelo WhatsApp." />
+        <SectionTitle eyebrow="Primeiro passo" title="Escolha seu salgado favorito" text="Comece pelo principal do pedido. Depois o carrinho sugere uma bebida ou combo para completar." />
         <div className="product-grid compact">
-          {specialProducts.map((product) => (
+          {salgados.map((product) => (
             <ProductCard key={product.id} product={product} onAdd={onAddProduct} onNavigate={onNavigate} />
           ))}
         </div>
-        <span className="mobile-scroll-hint">Arraste para escolher</span>
+      </section>
+
+      <section className="section">
+        <SectionTitle eyebrow="Para acompanhar" title="Bebidas geladas" text="Depois do salgado, ofereça uma bebida como em sistemas de fast-food." />
+        <div className="product-grid compact">
+          {bebidas.map((product) => (
+            <ProductCard key={product.id} product={product} onAdd={onAddProduct} onNavigate={onNavigate} />
+          ))}
+        </div>
+      </section>
+
+      <section className="section band">
+        <SectionTitle eyebrow="Mais completo" title="Combos da casa" text="Combos ajudam o cliente a decidir mais rápido e aumentam o valor do pedido." />
+        <div className="product-grid compact">
+          {combos.map((product) => (
+            <ProductCard key={product.id} product={product} onAdd={onAddProduct} onNavigate={onNavigate} />
+          ))}
+        </div>
       </section>
 
       <section className="promo-strip">
