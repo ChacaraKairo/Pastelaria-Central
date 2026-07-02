@@ -1,0 +1,7 @@
+nome: Guaraná gelado
+preco: 5,00
+descricao: Refrigerante gelado para acompanhar pastéis e salgados.
+disponivel: sim
+tipo: pedido_rapido
+selo: Gelado
+destaque: sim

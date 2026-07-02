@@ -59,29 +59,53 @@ export function hasRoleInCart(cartItems, roles) {
 }
 
 export function getCartUpsellSuggestions(cartItems, products, limit = 3) {
-  if (!cartItems.length) return [];
+  return getCartUpsellState(cartItems, products, limit).products;
+}
+
+export function getCartUpsellState(cartItems, products, limit = 3) {
+  if (!cartItems.length) {
+    return {
+      title: "Complete seu pedido",
+      text: "Adicione uma bebida ou combo antes de finalizar.",
+      products: [],
+    };
+  }
 
   const hasPrincipal = hasRoleInCart(cartItems, "principal");
   const hasDrink = hasCategoryInCart(cartItems, "Bebidas");
   const hasCombo = hasRoleInCart(cartItems, "combo");
 
   let targetCategories = [];
+  let title = "Complete seu pedido";
+  let text = "Adicione uma bebida ou combo antes de finalizar.";
 
   if (hasPrincipal && !hasDrink) {
     targetCategories = ["Bebidas"];
+    title = "Quer uma bebida para acompanhar?";
+    text = "Seu pedido combina com uma bebida gelada.";
   } else if (hasDrink && !hasPrincipal) {
     targetCategories = ["Salgados", "Pastéis"];
+    title = "Escolha um salgado para acompanhar";
+    text = "Complete a bebida com um salgado ou pastel quentinho.";
   } else if (!hasCombo) {
     targetCategories = ["Combos"];
+    title = "Transforme em combo";
+    text = "Mais sabor e praticidade para o seu lanche.";
   }
 
-  if (!targetCategories.length) return [];
+  if (!targetCategories.length) return { title, text, products: [] };
 
   const cartProductIds = new Set(cartItems.map((item) => item.id));
 
-  return products
+  const suggestions = products
     .filter((product) => product.available && product.price > 0)
     .filter((product) => !cartProductIds.has(product.id))
     .filter((product) => targetCategories.includes(product.category))
     .slice(0, limit);
+
+  return {
+    title,
+    text,
+    products: suggestions,
+  };
 }

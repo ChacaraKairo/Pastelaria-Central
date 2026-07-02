@@ -16,18 +16,18 @@ export const generatedCategories = [
 export const generatedProducts = [
   {
     "id": "cardapio-1-1",
-    "name": "Mate Cola",
+    "name": "Guaraná gelado",
     "category": "Bebidas",
-    "description": "Descrição a confirmar com a empresa.",
-    "price": 0,
+    "description": "Refrigerante gelado para acompanhar pastéis e salgados.",
+    "price": 5,
     "image": "/images/placeholder-drink.svg",
     "images": [
       "/images/placeholder-drink.svg"
     ],
     "available": true,
     "type": "pedido_rapido",
-    "badge": "Bebidas",
-    "featured": false,
+    "badge": "Gelado",
+    "featured": true,
     "sourceFolder": "/cardapio/bebidas/mate-cola"
   },
   {

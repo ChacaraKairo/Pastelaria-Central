@@ -1,8 +1,12 @@
 import { Minus, Plus, Trash2, X } from "lucide-react";
 import OrderForm from "./OrderForm";
-import { formatCurrency, getCartTotal } from "../features/cart/cartUtils";
+import UpsellPanel from "./UpsellPanel";
+import { products } from "../data/products";
+import { formatCurrency, getCartTotal, getCartUpsellState } from "../features/cart/cartUtils";
 
-export default function CartDrawer({ isOpen, cartItems, onClose, onUpdateQuantity, onRemove, onClear }) {
+export default function CartDrawer({ isOpen, cartItems, onClose, onUpdateQuantity, onRemove, onClear, onAddProduct }) {
+  const upsell = getCartUpsellState(cartItems, products);
+
   return (
     <aside className={isOpen ? "cart-drawer is-open" : "cart-drawer"} role="dialog" aria-modal="true" aria-labelledby="cart-title">
       <div className="cart-panel">
@@ -54,6 +58,15 @@ export default function CartDrawer({ isOpen, cartItems, onClose, onUpdateQuantit
           <button className="clear-cart" type="button" onClick={onClear}>
             Limpar carrinho
           </button>
+        )}
+
+        {cartItems.length > 0 && upsell.products.length > 0 && (
+          <UpsellPanel
+            title={upsell.title}
+            text={upsell.text}
+            products={upsell.products}
+            onAdd={(product) => onAddProduct?.(product)}
+          />
         )}
 
         <OrderForm cartItems={cartItems} />
