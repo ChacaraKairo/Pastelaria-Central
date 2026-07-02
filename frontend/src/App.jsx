@@ -47,11 +47,10 @@ export default function App() {
 
   function handleAddProduct(product, quantity = 1, itemNote = "") {
     setCartItems((items) => addItem(items, product, quantity, itemNote));
-    setCartOpen(true);
   }
 
   function handleClearCart() {
-    setCartItems(Array.from([]));
+    setCartItems([]);
   }
 
   return (
