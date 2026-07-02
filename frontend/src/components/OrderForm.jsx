@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import WhatsAppButton from "./WhatsAppButton";
 import { buildOrderMessage, buildWhatsAppUrl, validateOrder } from "../features/cart/whatsappMessage";
 import { clearCustomerData, loadCustomerData, saveCustomerData } from "../features/cart/customerStorage";
+import { formatCurrency, getCartTotal } from "../features/cart/cartUtils";
 
 const initialForm = {
   name: "",
@@ -18,12 +19,14 @@ export default function OrderForm({ cartItems }) {
   const [errors, setErrors] = useState({});
   const [saveData, setSaveData] = useState(true);
   const [locationStatus, setLocationStatus] = useState("");
+  const [orderReady, setOrderReady] = useState(false);
 
   const message = useMemo(() => buildOrderMessage(cartItems, formData), [cartItems, formData]);
   const whatsappUrl = buildWhatsAppUrl(message);
 
   function updateField(event) {
     const { name, value } = event.target;
+    setOrderReady(false);
     setFormData((current) => {
       const nextData = { ...current, [name]: value };
       if (saveData) saveCustomerData(nextData);
@@ -48,6 +51,7 @@ export default function OrderForm({ cartItems }) {
     setSaveData(false);
     setErrors({});
     setLocationStatus("");
+    setOrderReady(false);
   }
 
   function requestLocation() {
@@ -63,6 +67,7 @@ export default function OrderForm({ cartItems }) {
         const { latitude, longitude } = position.coords;
         const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
 
+        setOrderReady(false);
         setFormData((current) => {
           const nextData = { ...current, locationUrl };
           if (saveData) saveCustomerData(nextData);
@@ -81,21 +86,25 @@ export default function OrderForm({ cartItems }) {
     );
   }
 
-  function handleSubmit(event) {
+  function handleReviewOrder(event) {
     event.preventDefault();
     const validation = validateOrder(cartItems, formData);
     setErrors(validation);
 
     if (Object.keys(validation).length === 0) {
       if (saveData) saveCustomerData(formData);
-      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      setOrderReady(true);
     }
   }
 
+  function handleSendWhatsApp() {
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+  }
+
   return (
-    <form className="order-form" onSubmit={handleSubmit}>
-      <h3>Finalizar pelo WhatsApp</h3>
-      <p className="form-hint">Seus dados serão enviados pelo WhatsApp. Se desejar, eles ficam salvos apenas neste aparelho para o próximo pedido.</p>
+    <form className="order-form" onSubmit={handleReviewOrder}>
+      <h3>Finalizar pedido</h3>
+      <p className="form-hint">Adicione tudo que quiser ao carrinho. Depois revise os dados, finalize o pedido e só então envie pelo WhatsApp.</p>
       {errors.cart && <p className="error-message">{errors.cart}</p>}
 
       <label>
@@ -183,7 +192,18 @@ export default function OrderForm({ cartItems }) {
         </button>
       </div>
 
-      <WhatsAppButton type="submit">Enviar pedido</WhatsAppButton>
+      <div className="order-review-box">
+        <strong>Total do pedido: {formatCurrency(getCartTotal(cartItems))}</strong>
+        <span>{orderReady ? "Pedido finalizado. Agora você pode enviar para a pastelaria pelo WhatsApp." : "Revise seus itens e clique em Finalizar pedido antes de enviar."}</span>
+      </div>
+
+      {!orderReady ? (
+        <button className="btn btn-primary" type="submit">
+          Finalizar pedido
+        </button>
+      ) : (
+        <WhatsAppButton type="button" onClick={handleSendWhatsApp}>Enviar pedido pelo WhatsApp</WhatsAppButton>
+      )}
     </form>
   );
 }
