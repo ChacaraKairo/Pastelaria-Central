@@ -50,6 +50,10 @@ export default function App() {
     setCartOpen(true);
   }
 
+  function handleClearCart() {
+    setCartItems(Array.from([]));
+  }
+
   return (
     <div className="app">
       <Header currentPage={currentPage} onNavigate={navigate} cartItems={cartItems} onOpenCart={() => setCartOpen(true)} />
@@ -65,7 +69,8 @@ export default function App() {
           onClose={() => setCartOpen(false)}
           onUpdateQuantity={(lineId, quantity) => setCartItems((items) => updateQuantity(items, lineId, quantity))}
           onRemove={(lineId) => setCartItems((items) => removeItem(items, lineId))}
-          onClear={() => setCartItems([])}
+          onClear={handleClearCart}
+          onAddProduct={handleAddProduct}
         />
       )}
       <div className="floating-actions desktop-floating-actions">
