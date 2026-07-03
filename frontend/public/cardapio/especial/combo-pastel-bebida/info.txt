@@ -1,0 +1,7 @@
+nome: Combo pastel + bebida
+preco: 18,00
+descricao: Pastel crocante com bebida gelada para um lanche completo.
+disponivel: sim
+tipo: pedido_rapido
+selo: Combo
+destaque: sim

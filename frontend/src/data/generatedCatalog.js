@@ -7,7 +7,6 @@ export const generatedCategories = [
   "Doces",
   "Especial",
   "Pastéis",
-  "Produtos de NC",
   "Salgados Assados",
   "Salgados Fritos",
   "Sobremesas"
@@ -16,13 +15,13 @@ export const generatedCategories = [
 export const generatedProducts = [
   {
     "id": "cardapio-1-1",
-    "name": "Guaraná gelado",
+    "name": "Mate Cola",
     "category": "Bebidas",
-    "description": "Refrigerante gelado para acompanhar pastéis e salgados.",
+    "description": "Mate Cola gelada para acompanhar pastéis, salgados e combos.",
     "price": 5,
-    "image": "/images/placeholder-drink.svg",
+    "image": "/cardapio/bebidas/mate-cola/1.jpeg",
     "images": [
-      "/images/placeholder-drink.svg"
+      "/cardapio/bebidas/mate-cola/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
@@ -31,52 +30,36 @@ export const generatedProducts = [
     "sourceFolder": "/cardapio/bebidas/mate-cola"
   },
   {
-    "id": "cardapio-1-2",
-    "name": "Mate Cola",
-    "category": "Bebidas",
-    "description": "Bebida gelada. Sabores a confirmar pelo WhatsApp.",
-    "price": 5,
-    "image": "/images/placeholder-drink.svg",
-    "images": [
-      "/images/placeholder-drink.svg"
-    ],
-    "available": true,
-    "type": "pedido_rapido",
-    "badge": "Gelado",
-    "featured": false,
-    "sourceFolder": "/cardapio/bebidas/produto-exemplo"
-  },
-  {
     "id": "cardapio-2-1",
     "name": "Doce caseiro",
     "category": "Doces",
     "description": "Doce caseiro vendido conforme disponibilidade do dia.",
     "price": 6,
-    "image": "/images/placeholder-combo.svg",
+    "image": "/cardapio/doces/doce-caseiro/1.jpeg",
     "images": [
-      "/images/placeholder-combo.svg"
+      "/cardapio/doces/doce-caseiro/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
     "badge": "Caseiro",
     "featured": false,
-    "sourceFolder": "/cardapio/doces/produto-exemplo"
+    "sourceFolder": "/cardapio/doces/doce-caseiro"
   },
   {
     "id": "cardapio-3-1",
-    "name": "Combo especial da Central",
+    "name": "Combo pastel + bebida",
     "category": "Especial",
-    "description": "Produto especial da casa. Confirmar composição pelo WhatsApp.",
+    "description": "Pastel crocante com bebida gelada para um lanche completo.",
     "price": 18,
-    "image": "/images/placeholder-combo.svg",
+    "image": "/cardapio/especial/combo-pastel-bebida/1.jpeg",
     "images": [
-      "/images/placeholder-combo.svg"
+      "/cardapio/especial/combo-pastel-bebida/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
-    "badge": "Especial",
+    "badge": "Combo",
     "featured": true,
-    "sourceFolder": "/cardapio/especial/produto-exemplo"
+    "sourceFolder": "/cardapio/especial/combo-pastel-bebida"
   },
   {
     "id": "cardapio-4-1",
@@ -84,9 +67,9 @@ export const generatedProducts = [
     "category": "Pastéis",
     "description": "Pastel frito na hora com recheio de carne temperada.",
     "price": 8,
-    "image": "/images/placeholder-food.svg",
+    "image": "/cardapio/pasteis/pastel-de-carne/1.jpeg",
     "images": [
-      "/images/placeholder-food.svg"
+      "/cardapio/pasteis/pastel-de-carne/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
@@ -96,45 +79,29 @@ export const generatedProducts = [
   },
   {
     "id": "cardapio-5-1",
-    "name": "Cachaça artesanal de Novo Cruzeiro",
-    "category": "Produtos de NC",
-    "description": "Produto de Novo Cruzeiro/MG vendido conforme disponibilidade. Consulte valores pelo WhatsApp.",
-    "price": 0,
-    "image": "/images/placeholder-combo.svg",
-    "images": [
-      "/images/placeholder-combo.svg"
-    ],
-    "available": true,
-    "type": "encomenda",
-    "badge": "Produto de NC",
-    "featured": false,
-    "sourceFolder": "/cardapio/produtos-de-nc/cachaca-artesanal"
-  },
-  {
-    "id": "cardapio-6-1",
     "name": "Enroladinho assado",
     "category": "Salgados Assados",
     "description": "Salgado assado com massa macia e recheio saboroso.",
     "price": 6,
-    "image": "/images/placeholder-food.svg",
+    "image": "/cardapio/salgados-assados/enroladinho-assado/1.jpeg",
     "images": [
-      "/images/placeholder-food.svg"
+      "/cardapio/salgados-assados/enroladinho-assado/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
     "badge": "Assado",
     "featured": false,
-    "sourceFolder": "/cardapio/salgados-assados/produto-exemplo"
+    "sourceFolder": "/cardapio/salgados-assados/enroladinho-assado"
   },
   {
-    "id": "cardapio-7-1",
+    "id": "cardapio-6-1",
     "name": "Coxinha de frango",
     "category": "Salgados Fritos",
     "description": "Coxinha cremosa com casquinha sequinha.",
     "price": 6,
-    "image": "/images/placeholder-food.svg",
+    "image": "/cardapio/salgados-fritos/coxinha-de-frango/1.jpeg",
     "images": [
-      "/images/placeholder-food.svg"
+      "/cardapio/salgados-fritos/coxinha-de-frango/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
@@ -143,19 +110,19 @@ export const generatedProducts = [
     "sourceFolder": "/cardapio/salgados-fritos/coxinha-de-frango"
   },
   {
-    "id": "cardapio-8-1",
+    "id": "cardapio-7-1",
     "name": "Sobremesa do dia",
     "category": "Sobremesas",
-    "description": "Opção doce para finalizar o pedido. Confirmar disponibilidade.",
+    "description": "Opção doce para finalizar o pedido com sabor de casa.",
     "price": 7,
-    "image": "/images/placeholder-combo.svg",
+    "image": "/cardapio/sobremesas/sobremesa-do-dia/1.jpeg",
     "images": [
-      "/images/placeholder-combo.svg"
+      "/cardapio/sobremesas/sobremesa-do-dia/1.jpeg"
     ],
     "available": true,
     "type": "pedido_rapido",
     "badge": "Doce",
     "featured": false,
-    "sourceFolder": "/cardapio/sobremesas/produto-exemplo"
+    "sourceFolder": "/cardapio/sobremesas/sobremesa-do-dia"
   }
 ];

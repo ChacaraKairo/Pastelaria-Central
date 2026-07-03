@@ -1,7 +1,0 @@
-nome: Combo especial da Central
-preco: 18,00
-descricao: Produto especial da casa. Confirmar composição pelo WhatsApp.
-disponivel: sim
-tipo: pedido_rapido
-selo: Especial
-destaque: sim

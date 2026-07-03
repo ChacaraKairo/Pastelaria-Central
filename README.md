@@ -58,4 +58,6 @@ A documentação do projeto está na pasta [`docs`](./docs/README.md).
 
 ## Status
 
-Documentação inicial em desenvolvimento antes do início da implementação.
+MVP em desenvolvimento avançado, com frontend React/Vite, fluxo de pedido pelo WhatsApp, carrinho com upsell, formulário de encomenda e formulário local para manutenção do cardápio.
+
+Antes da publicação, siga o checklist de produção em [`docs/31-checklist-producao.md`](./docs/31-checklist-producao.md).

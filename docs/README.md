@@ -30,6 +30,11 @@ Esta pasta contém a documentação funcional, técnica, visual e estratégica d
 24. [Componentes mobile](./24-componentes-mobile.md)
 25. [Fluxo mobile de pedido](./25-fluxo-mobile-pedido.md)
 26. [PWA futuro](./26-pwa-futuro.md)
+27. [Estratégia fast-food e upsell](./27-estrategia-fastfood-upsell.md)
+28. [Ajustes no cardápio fast-food](./28-ajustes-cardapio-fastfood.md)
+29. [Fluxo de pedido com upsell](./29-fluxo-pedido-com-upsell.md)
+30. [Critérios fast-food e upsell](./30-criterios-fastfood-upsell.md)
+31. [Checklist de produção](./31-checklist-producao.md)
 
 ## Diagramas
 

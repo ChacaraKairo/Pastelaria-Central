@@ -18,7 +18,7 @@ export default function Hero({ onNavigate }) {
         </div>
       </div>
       <div className="hero-plate" aria-label="Pastel crocante com bebida">
-        <img src="/images/placeholder-hero.svg" alt="Pastel crocante da Pastelaria Central" />
+        <img src="/images/hero-pastel-bebida.jpeg" alt="Pastéis crocantes com bebida da Pastelaria Central" />
         <div>
           <strong>Combo pastel + bebida</strong>
           <span>A partir de R$ 12,00</span>

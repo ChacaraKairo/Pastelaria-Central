@@ -68,7 +68,7 @@
     backdrop-filter: blur(14px);
   }
 
-  .mobile-header > div {
+  .mobile-header > div:not(.mobile-brand) {
     display: grid;
     gap: 3px;
   }
@@ -77,7 +77,8 @@
     font-size: 1.02rem;
   }
 
-  .mobile-header span {
+  .mobile-header > div:not(.mobile-brand) > span,
+  .mobile-brand small {
     display: inline-flex;
     align-items: center;
     gap: 4px;
@@ -383,6 +384,22 @@
     font-size: 0.86rem;
   }
 
+  .cart-notice {
+    left: 14px;
+    right: 14px;
+    bottom: 140px;
+    width: auto;
+  }
+
+  .cart-notice-actions {
+    justify-content: stretch;
+  }
+
+  .cart-notice-actions .btn {
+    flex: 1;
+    width: auto;
+  }
+
   .product-modal-panel {
     left: 0;
     right: 0;
@@ -604,8 +621,23 @@
   .mini-card-grid,
   .contact-grid,
   .form-grid,
-  .feature-layout {
+  .feature-layout,
+  .about-hero,
+  .about-story-grid,
+  .about-highlight-grid,
+  .about-photo-band,
+  .about-location-strip {
     grid-template-columns: 1fr;
+  }
+
+  .about-actions .btn,
+  .about-location-strip .btn {
+    width: 100%;
+  }
+
+  .about-owner-card img {
+    min-height: auto;
+    max-height: 360px;
   }
 
   .mini-card,

@@ -22,7 +22,7 @@ export default function Header({ currentPage, onNavigate, cartItems, onOpenCart 
   return (
     <header className="site-header">
       <button className="brand" type="button" onClick={() => navigate("home")}>
-        <span>PC</span>
+        <img src="/images/logo.jpeg" alt="" />
         <strong>Pastelaria Central</strong>
       </button>
 

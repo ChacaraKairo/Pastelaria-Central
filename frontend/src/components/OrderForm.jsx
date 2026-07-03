@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import WhatsAppButton from "./WhatsAppButton";
 import { buildOrderMessage, buildWhatsAppUrl, validateOrder } from "../features/cart/whatsappMessage";
 import { clearCustomerData, loadCustomerData, saveCustomerData } from "../features/cart/customerStorage";
@@ -18,11 +18,28 @@ export default function OrderForm({ cartItems }) {
   const [formData, setFormData] = useState(() => ({ ...initialForm, ...loadCustomerData(), notes: "" }));
   const [errors, setErrors] = useState({});
   const [saveData, setSaveData] = useState(true);
-  const [locationStatus, setLocationStatus] = useState("");
   const [orderReady, setOrderReady] = useState(false);
 
   const message = useMemo(() => buildOrderMessage(cartItems, formData), [cartItems, formData]);
   const whatsappUrl = buildWhatsAppUrl(message);
+
+  useEffect(() => {
+    setOrderReady(false);
+  }, [cartItems]);
+
+  useEffect(() => {
+    function handleCustomerUpdate(event) {
+      setFormData((current) => ({
+        ...current,
+        ...event.detail,
+        notes: current.notes,
+      }));
+      setOrderReady(false);
+    }
+
+    window.addEventListener("pastelaria-customer-updated", handleCustomerUpdate);
+    return () => window.removeEventListener("pastelaria-customer-updated", handleCustomerUpdate);
+  }, []);
 
   function updateField(event) {
     const { name, value } = event.target;
@@ -50,40 +67,7 @@ export default function OrderForm({ cartItems }) {
     setFormData(initialForm);
     setSaveData(false);
     setErrors({});
-    setLocationStatus("");
     setOrderReady(false);
-  }
-
-  function requestLocation() {
-    if (!navigator.geolocation) {
-      setLocationStatus("Seu navegador não permite enviar localização.");
-      return;
-    }
-
-    setLocationStatus("Solicitando localização...");
-
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude } = position.coords;
-        const locationUrl = `https://www.google.com/maps?q=${latitude},${longitude}`;
-
-        setOrderReady(false);
-        setFormData((current) => {
-          const nextData = { ...current, locationUrl };
-          if (saveData) saveCustomerData(nextData);
-          return nextData;
-        });
-        setLocationStatus("Localização adicionada ao pedido.");
-      },
-      () => {
-        setLocationStatus("Não foi possível obter a localização. Você pode informar o endereço manualmente.");
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 10000,
-        maximumAge: 60000,
-      }
-    );
   }
 
   function handleReviewOrder(event) {
@@ -138,31 +122,7 @@ export default function OrderForm({ cartItems }) {
             <input name="address" value={formData.address} onChange={updateField} placeholder="Rua, número, bairro e referência" />
             {errors.address && <small>{errors.address}</small>}
           </label>
-
-          <div className="location-box">
-            <div>
-              <strong>Localização do cliente</strong>
-              <span>{formData.locationUrl ? "Localização pronta para enviar no WhatsApp." : "Use para ajudar a entrega a encontrar você."}</span>
-            </div>
-            <button className="btn btn-light" type="button" onClick={requestLocation}>
-              Usar minha localização
-            </button>
-            {locationStatus && <small>{locationStatus}</small>}
-          </div>
         </>
-      )}
-
-      {formData.receiveType !== "entrega" && (
-        <div className="location-box">
-          <div>
-            <strong>Localização do cliente</strong>
-            <span>{formData.locationUrl ? "Localização pronta para enviar no WhatsApp." : "Opcional. Use se quiser enviar sua localização junto do pedido."}</span>
-          </div>
-          <button className="btn btn-light" type="button" onClick={requestLocation}>
-            Usar minha localização
-          </button>
-          {locationStatus && <small>{locationStatus}</small>}
-        </div>
       )}
 
       <label>

@@ -1,6 +1,6 @@
-nome: Guaraná gelado
+nome: Mate Cola
 preco: 5,00
-descricao: Refrigerante gelado para acompanhar pastéis e salgados.
+descricao: Mate Cola gelada para acompanhar pastéis, salgados e combos.
 disponivel: sim
 tipo: pedido_rapido
 selo: Gelado

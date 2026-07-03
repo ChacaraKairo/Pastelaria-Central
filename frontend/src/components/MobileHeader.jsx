@@ -5,9 +5,12 @@ import { siteConfig } from "../data/siteConfig";
 export default function MobileHeader({ cartItems, onOpenCart }) {
   return (
     <header className="mobile-header">
-      <div>
-        <strong>{siteConfig.businessName}</strong>
-        <span><MapPin size={14} /> {siteConfig.city}</span>
+      <div className="mobile-brand">
+        <img src="/images/logo.jpeg" alt="" />
+        <span>
+          <strong>{siteConfig.businessName}</strong>
+          <small><MapPin size={14} /> {siteConfig.city}</small>
+        </span>
       </div>
       <button className="icon-button cart-button" type="button" onClick={onOpenCart} aria-label="Abrir carrinho">
         <ShoppingCart size={21} />

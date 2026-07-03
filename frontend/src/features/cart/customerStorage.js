@@ -26,6 +26,19 @@ export function saveCustomerData(formData) {
   window.localStorage.setItem(STORAGE_KEY, JSON.stringify(customerData));
 }
 
+export function mergeCustomerData(partialData) {
+  if (typeof window === "undefined") return;
+
+  const currentData = loadCustomerData();
+  const nextData = {
+    ...currentData,
+    ...partialData,
+  };
+
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextData));
+  window.dispatchEvent(new CustomEvent("pastelaria-customer-updated", { detail: nextData }));
+}
+
 export function clearCustomerData() {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(STORAGE_KEY);

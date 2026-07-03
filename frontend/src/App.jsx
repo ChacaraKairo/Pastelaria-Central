@@ -12,6 +12,7 @@ import CafeDoCiclista from "./pages/CafeDoCiclista";
 import Sobre from "./pages/Sobre";
 import Contato from "./pages/Contato";
 import { addItem, removeItem, updateQuantity } from "./features/cart/cartUtils";
+import { loadCustomerData, mergeCustomerData } from "./features/cart/customerStorage";
 import WhatsAppButton from "./components/WhatsAppButton";
 import { getWhatsAppUrl } from "./data/siteConfig";
 import "./styles/global.css";
@@ -30,6 +31,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(() => window.location.hash.replace("#", "") || "home");
   const [cartItems, setCartItems] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [cartNotice, setCartNotice] = useState(null);
 
   const CurrentPage = pages[currentPage] || Home;
 
@@ -39,6 +41,36 @@ export default function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
+  useEffect(() => {
+    if (!navigator.geolocation) return;
+    if (loadCustomerData().locationUrl) return;
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        mergeCustomerData({
+          locationUrl: `https://www.google.com/maps?q=${latitude},${longitude}`,
+        });
+      },
+      () => {},
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 60000,
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    if (!cartNotice) return undefined;
+
+    const timer = window.setTimeout(() => {
+      setCartNotice(null);
+    }, 4200);
+
+    return () => window.clearTimeout(timer);
+  }, [cartNotice]);
+
   function navigate(page) {
     setCurrentPage(page);
     window.location.hash = page;
@@ -47,6 +79,10 @@ export default function App() {
 
   function handleAddProduct(product, quantity = 1, itemNote = "") {
     setCartItems((items) => addItem(items, product, quantity, itemNote));
+    setCartNotice({
+      productName: product.name,
+      quantity,
+    });
   }
 
   function handleClearCart() {
@@ -76,6 +112,29 @@ export default function App() {
         <button className="floating-cart" type="button" onClick={() => setCartOpen(true)}>Carrinho</button>
         <WhatsAppButton href={getWhatsAppUrl()}>WhatsApp</WhatsAppButton>
       </div>
+      {cartNotice && (
+        <div className="cart-notice" role="status" aria-live="polite">
+          <div>
+            <strong>{cartNotice.quantity}x {cartNotice.productName}</strong>
+            <span>Produto adicionado ao carrinho.</span>
+          </div>
+          <div className="cart-notice-actions">
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={() => {
+                setCartOpen(true);
+                setCartNotice(null);
+              }}
+            >
+              Ver carrinho
+            </button>
+            <button className="btn btn-light" type="button" onClick={() => setCartNotice(null)}>
+              Continuar comprando
+            </button>
+          </div>
+        </div>
+      )}
       <FloatingCartButton cartItems={cartItems} onOpenCart={() => setCartOpen(true)} />
       <MobileBottomNav currentPage={currentPage} cartItems={cartItems} onNavigate={navigate} onOpenCart={() => setCartOpen(true)} />
     </div>
